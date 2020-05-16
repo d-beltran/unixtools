@@ -1,0 +1,28 @@
+# Check if the '.notes' folder does already exists
+if [ ! -d $HOME/.notes ]
+# If not, create it and warn the user
+then
+ mkdir ~/.notes
+ echo A new directory .notes has been created at the home directory.
+fi
+
+# Check if there is no first argument
+if [ -z $1 ]
+# If not, print the help output
+then
+ echo Type notes -name with the name of the text file to be opened/created:
+ ls $HOME/.notes/$1
+ exit 1
+fi
+
+# Check if the provided option name matches any existing text file
+if [ ! -f $HOME/.notes/$1 ]
+# Create a new text
+then
+ > $HOME/.notes/$1
+ echo $1 does not match any note. A new note has been created.
+fi
+
+# Open the text file
+gedit $HOME/.notes/$1 &
+exit 0
