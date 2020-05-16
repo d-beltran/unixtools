@@ -1,0 +1,6 @@
+# Unixtools setup
+# Copy the specified command files is usual command directories which are included in the PATH
+
+sudo rsync notes /usr/local/bin/notes
+sudo chown root: /usr/local/bin/notes
+sudo chmod 755 /usr/local/bin/notes

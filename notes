@@ -17,10 +17,18 @@ fi
 
 # Check if the provided option name matches any existing text file
 if [ ! -f $HOME/.notes/$1 ]
-# Create a new text
+# Create a new notes file
 then
- > $HOME/.notes/$1
- echo $1 does not match any note. A new note has been created.
+ while true; do
+    read -p "'$1' does not match any note. Would you like to create a new note? (y/n)" yn
+    case $yn in
+        [Yy]* ) > $HOME/.notes/$1; echo "A new note has been created: $1"; gedit $HOME/.notes/$1; exit 0;;
+        [Nn]* ) echo 'Aborted'; exit 0;;
+        * ) echo "Please answer yes or no.";;
+    esac
+ done
+ #> $HOME/.notes/$1
+ #echo $1 does not match any note. A new note has been created.
 fi
 
 # Open the text file
