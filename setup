@@ -1,0 +1,33 @@
+# Hay que instalar gnome tweaks si no está instalado
+apt install gnome-tweak-tool
+
+# Apagar wifi
+nmcli radio wifi off
+
+# Desactivar ruiditos
+gsettings set org.gnome.desktop.sound event-sounds false
+
+# Cambiar tema a oscuro
+gsettings set org.gnome.desktop.interface gtk-theme "Adwaita-dark"
+
+# Remove background image
+gsettings set org.gnome.desktop.background picture-options none
+
+# Place taskbar at right
+gsettings set org.gnome.shell.extensions.dash-to-dock dock-position RIGHT
+
+# Muestra la fecha junto al reloj
+gsettings set org.gnome.desktop.interface clock-show-date true
+
+# Install steam
+sudo apt install steam
+
+# Install useful drivers for gaming
+sudo apt install mesa-vulkan-drivers
+
+# Install blender
+sudo apt install blender
+
+# Download last version of unity 5 for linux
+wget http://beta.unity3d.com/download/d72e16ff4aba/unity-editor_amd64-5.6.3xf1Linux.deb
+
