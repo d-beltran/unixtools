@@ -1,0 +1,23 @@
+# Check if there is no first argument
+if [ -z $1 ]
+# If not, print the help output
+then
+  echo Type \'regis text\' with the text to be searched in the history
+  exit 1
+fi
+
+# Merge all variable into a single string separated by spaces
+line="${1}"
+for argument in "$@"
+do
+  if [ $argument = $1 ]
+  then
+    continue
+  else
+    line="${line} ${argument}"
+  fi
+done
+
+# Find the input text in the history
+history | grep "$line"
+#exit 0

@@ -10,7 +10,7 @@ fi
 if [ -z $1 ]
 # If not, print the help output
 then
- echo Type notes -name with the name of the text file to be opened/created:
+ echo Type \'notes name\' with the name of the text file to be opened/created:
  ls $HOME/.notes/$1
  exit 1
 fi

@@ -4,3 +4,7 @@
 sudo rsync notes /usr/local/bin/notes
 sudo chown root: /usr/local/bin/notes
 sudo chmod 755 /usr/local/bin/notes
+
+sudo rsync regis /usr/local/bin/regis
+sudo chown root: /usr/local/bin/regis
+sudo chmod 755 /usr/local/bin/regis
