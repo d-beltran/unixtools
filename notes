@@ -10,25 +10,51 @@ fi
 if [ -z $1 ]
 # If not, print the help output
 then
- echo Type \'notes name\' with the name of the text file to be opened/created:
- ls $HOME/.notes/$1
- exit 1
+	echo Type \'notes name\' with the name of the note to be opened/created
+	echo Type \'notes -remove name\' with the name of the note to be removed
+	echo Avilabel notes:
+	ls $HOME/.notes
+	exit 1
+fi
+
+# If the first argument is '-remove' we remove the note specified in the second argument
+if [ $1 = "-remove" ]
+then	
+	# If there is no second argument return help
+	if [ -z $2 ]
+	then
+		echo Specify the note to be deleted. e.g. \'notes -remove my_note\'
+		exit 1
+	fi
+	
+	# If specified note does not exist return all note names
+	if [ ! -f $HOME/.notes/$2 ]
+	then
+		echo Note \'$2\' does not exist
+		echo Avilabel notes:
+		ls $HOME/.notes
+		exit 1
+	fi
+
+	# Otherwise all is correct. Remove the specified note and print the confirmation
+	rm $HOME/.notes/$2
+	echo Note \'$2\' has been removed
+	exit 0
 fi
 
 # Check if the provided option name matches any existing text file
 if [ ! -f $HOME/.notes/$1 ]
-# Create a new notes file
+# Ask user to confirm the creation of the new note
 then
  while true; do
-    read -p "'$1' does not match any note. Would you like to create a new note? (y/n)" yn
+    read -p "'$1' does not match any note. Would you like to create a new note? (y/n)`echo $'\n> '`" yn
     case $yn in
+	# If confirmed, create the new note
         [Yy]* ) > $HOME/.notes/$1; echo "A new note has been created: $1"; gedit $HOME/.notes/$1; exit 0;;
         [Nn]* ) echo 'Aborted'; exit 0;;
         * ) echo "Please answer yes or no.";;
     esac
  done
- #> $HOME/.notes/$1
- #echo $1 does not match any note. A new note has been created.
 fi
 
 # Open the text file
