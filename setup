@@ -7,4 +7,8 @@ sudo chmod 755 /usr/local/bin/notes
 
 # Set the alias 'regis' in the .bashrc
 echo "alias regis='history | grep'" >> ~/.bashrc
+
+# Set the alias 'susp' in the .bashrc
+echo "alias susp='systemctl suspend'" >> ~/.bashrc
+
 source ~/.bashrc
