@@ -12,7 +12,7 @@ if [ -z $1 ]
 then
 	echo Type \'notes name\' with the name of the note to be opened/created
 	echo Type \'notes -remove name\' with the name of the note to be removed
-	echo Avilabel notes:
+	echo Available notes:
 	ls $HOME/.notes
 	exit 1
 fi
@@ -31,7 +31,7 @@ then
 	if [ ! -f $HOME/.notes/$2 ]
 	then
 		echo Note \'$2\' does not exist
-		echo Avilabel notes:
+		echo Available notes:
 		ls $HOME/.notes
 		exit 1
 	fi
